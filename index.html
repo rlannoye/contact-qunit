@@ -116,7 +116,21 @@
       });
 
       QUnit.test("remove contact tests", function (assert) {
-        assert.ok(false);
+          var listTest=Contact.Contacts.instance();
+          var bouton=$('table tr td a')[0];
+
+          var contactFirstName=$('table tr td:first-child')[0];
+          var contactLastName=$('table tr td:nth-child(2)')[0];
+          size=listTest.size();
+
+          bouton.click();
+
+          var contactFirstName2=$('table tr td:first-child')[0];
+          var contactLastName2=$('table tr td:nth-child(2)')[0];
+          size2=listTest.size();
+
+          assert.ok(size !== size2 && contactFirstName !== contactFirstName2 && contactLastName !== contactLastName2);
+
       });
 
       QUnit.test("sort contact tests", function (assert) {
