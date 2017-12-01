@@ -64,7 +64,12 @@
     <!-- BEGIN - Les tests -->
     <script>
       QUnit.test("header tests", function (assert) {
-        assert.ok(false);
+          assert.equal($('table tbody th')[0].innerHTML,"First name");
+          assert.equal($('table tbody th')[1].innerHTML,"Last name");
+          assert.equal($('table tbody th')[2].innerHTML,"Phones");
+          assert.equal($('table tbody th')[3].innerHTML,"Mails");
+          assert.equal($('table tbody th')[4].innerHTML,"Tags");
+          assert.equal($('table tbody th')[5].innerHTML,"Actions");
       });
 
       QUnit.test("list tests", function (assert) {
