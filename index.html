@@ -130,11 +130,22 @@
           size2=listTest.size();
 
           assert.ok(size !== size2 && contactFirstName !== contactFirstName2 && contactLastName !== contactLastName2);
-
       });
 
       QUnit.test("sort contact tests", function (assert) {
-        assert.ok(false);
+          var listTest=Contact.Contacts.instance();
+          var bouton = $("#button_sort");
+          var flag = true;
+
+          bouton.click();
+
+          var contactLastName = $('table tbody tr td:nth-child(2)');
+          for(var i=0; i < listTest.size()-1; i++){
+              if(contactLastName[i].innerHTML > contactLastName[i+1].innerHTML){
+                  flag = false;
+              }
+          }
+        assert.ok(flag);
       });
     </script>
     <!-- END - Les tests -->
