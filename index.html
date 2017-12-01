@@ -89,7 +89,30 @@
       });
 
       QUnit.test("first entry tests", function (assert) {
-        assert.ok(false);
+          var contactFirstName=$('table tr td:first-child');
+          var contactLastName=$('table tr td:nth-child(2)');
+          var contactPhones=$('table tr td:nth-child(3)');
+          var contactMails=$('table tr td:nth-child(4)');
+          var contactTags=$('table tr td:nth-child(5)');
+
+          var listTest=Contact.Contacts.instance();
+          var iterator = listTest.iterator();
+          contact=iterator.next();
+
+          var formatPhones=contactPhones[0].innerHTML.split("/");
+          var formatMails=contactMails[0].innerHTML.split("/");
+
+          assert.equal(contactFirstName[0].innerHTML,contact.firstName());
+          assert.equal(contactLastName[0].innerHTML,contact.lastName());
+
+          assert.equal(formatPhones[0].substring(0,10),"0616642258");
+          assert.equal(formatPhones[1].substring(0,10),"0321465676");
+
+          assert.equal(formatMails[0].substring(0,formatMails[0].length -5),"ramat@lisic.univ-littoral.fr");
+          assert.equal(formatMails[1].substring(0,formatMails[1].length -7),"eric.ramat@gmail.com");
+
+          assert.equal(contactTags[0].innerHTML,"prof");
+
       });
 
       QUnit.test("remove contact tests", function (assert) {
